@@ -27,6 +27,7 @@ var ajika_xma = new Audio('xmebi/ajika.mp3')
 
 
 
+
 function damateba()
 {
     ricxvi= ricxvi + momatebuli;
@@ -43,9 +44,27 @@ function momateba()
         momatebuli++;
         document.getElementById('qula').innerHTML = ricxvi;
         document.getElementById('fasi1').innerHTML = fasi1;
+        document.getElementById('ag_kliki_p').innerHTML = momatebuli;
+        const ag_kliki = document.getElementById("ag_kliki");
+        ag_kliki.style.display = "inline";
         gadzliereba.play();
     }
 }
+
+function droiti_momateba() {
+  ricxvi = ricxvi + sicives_kliki;
+  ricxvi = ricxvi + tyemali;
+  ricxvi = ricxvi + ajika;
+
+  if (sicives_kliki > 0 || tyemali > 0 || ajika > 0){
+   vibracia();
+  } 
+    
+    document.getElementById('qula').innerHTML = ricxvi;
+}
+
+
+
 
 function sicive_yidva()
 {
@@ -55,21 +74,10 @@ function sicive_yidva()
         sicives_kliki++;
         document.getElementById('qula').innerHTML = ricxvi;
         document.getElementById('fasi2').innerHTML = fasi2;
+        document.getElementById('ag_sicive_p').innerHTML = sicives_kliki;
+        const ag_sicive = document.getElementById("ag_sicive");
+        ag_sicive.style.display = "inline";
         sicive_xma.play();
-    }
-}
-
-function sicive_kliki(){
-    ricxvi = ricxvi + sicives_kliki;
-    document.getElementById('qula').innerHTML = ricxvi;
-    
-    if (sicives_kliki > 0){
-        mtavari_knopka.classList.add("vibrate");
-  // Remove "vibrate" class from the button after 0.2 seconds
-  setTimeout(function vibracia() {
-    mtavari_knopka.classList.remove("vibrate");
-  }, 200);
-
     }
 }
 
@@ -100,15 +108,31 @@ function sicive_kliki(){
 // }
 
 
-mtavari_knopka.addEventListener("click", function vibracia() {
-  // Add "vibrate" class to the button
-  mtavari_knopka.classList.add("vibrate");
+function vibracia() {
+  const mfoto = document.getElementById("damateba");
+  mfoto.classList.add("vibrate");
 
-  // Remove "vibrate" class from the button after 0.2 seconds
   setTimeout(function vibracia() {
-    mtavari_knopka.classList.remove("vibrate");
+    mfoto.classList.remove("vibrate");
   }, 200);
-});
+}
+
+
+function tyemali_yidva() {
+    if (ricxvi >= fasi3){
+        ricxvi = ricxvi - fasi3;
+        fasi3 = fasi3 + 100;
+        tyemali= tyemali + 5;
+        document.getElementById('qula').innerHTML = ricxvi;
+        document.getElementById('fasi3').innerHTML = fasi3;
+        document.getElementById('ag_tyemali_p').innerHTML = tyemali;
+        const ag_tyemali = document.getElementById("ag_tyemali");
+        ag_tyemali.style.display = "inline";
+        tyemlis_xma.play();
+    }
+}
+
+
 
 function siaxleebi() {
   if (ricxvib >= 500){
@@ -120,22 +144,6 @@ function siaxleebi() {
   }
 }
 
-function tyemali_yidva() {
-    if (ricxvi >= fasi3){
-        ricxvi = ricxvi - fasi3;
-        fasi3 = fasi3 + 100;
-        tyemali= tyemali + 5;
-        document.getElementById('qula').innerHTML = ricxvi;
-        document.getElementById('fasi3').innerHTML = fasi3;
-        tyemlis_xma.play();
-    }
-}
-
-function tyemali_mushaoba() {
-    ricxvi = ricxvi + tyemali;
-    document.getElementById('qula').innerHTML = ricxvi;
-}
-
 function ajika_yidva() {
   if (ricxvi >= fasi4){
       ricxvi = ricxvi - fasi4;
@@ -143,43 +151,39 @@ function ajika_yidva() {
       ajika= ajika + 15;
       document.getElementById('qula').innerHTML = ricxvi;
       document.getElementById('fasi4').innerHTML = fasi4;
+      document.getElementById('ag_ajika_p').innerHTML = ajika;
+      const ag_ajika = document.getElementById("ag_ajika");
+      ag_ajika.style.display = "inline";
       ajika_xma.play();
   }
 }
 
-function ajika_mushaoba() {
-  ricxvi = ricxvi + ajika;
-  document.getElementById('qula').innerHTML = ricxvi;
-}
-
-
 
 function bonusebi_gamochena() {
-  mtavari_knopka_shecvla.style.marginRight = "5px";
   const bonus_gamochena = document.getElementById("bonusebi");
-  bonus_gamochena.style.display = "block";
-  mtavari_gverdi.style.width = "1318px";
-}
-
-function u1_damateba(){
-  const u1 = document.getElementById('u1');
-  u1.style.display = "block";
+  bonus_gamochena.style.display = "flex";
 }
 
 function bonus1(){
-  if ( ricxvib >= 600){
+  if ( ricxvib >= 10){
     momatebuli = momatebuli * 2;
     ricxvib = ricxvib - 600;
     const b1 = document.getElementById('b1');
-    b1.style.display="none";
+    b1.style.display = "none";
     document.getElementById('qulab').innerHTML = ricxvib;
+    document.getElementById('ag_kliki_p').innerHTML = momatebuli;
   }
 }
+
+
+function u1_damateba(){
+  const u1 = document.getElementById('u1');
+  u1.style.display = "flex";
+}
+
 
 
 
 
 setInterval(siaxleebi, 1000)
-setInterval(sicive_kliki, 1000)
-setInterval(tyemali_mushaoba, 1000)
-setInterval(ajika_mushaoba, 1000)
+setInterval(droiti_momateba, 1000)
