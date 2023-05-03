@@ -50,6 +50,7 @@ var iumorina_xma = new Audio('xmebi/iumorina.mp3');
 
 
 
+
 function xebis_1(x) {
   x_ebi = x;
   if (x == 1){
@@ -263,7 +264,8 @@ function vibracia() {
 }
 
 function siaxleebi() {
-
+  // bg.play();
+  // bg.volume = 0.1;
   //bonusebi
   if (ricxvib >= 500){
     //klikis
@@ -366,11 +368,13 @@ function bonus1(){
 }
 
 function bonus2(){
+  //tyemlis xe
   if ( ricxvib >= 1000){
     fasi3 = fasi3 / 2;
     ricxvib = ricxvib - 1000;
     const b1 = document.getElementById('b2');
     b1.style.display = "none";
+    document.getElementById('b2_gamyofi').style.display = "none";
     document.getElementById('qulab').innerHTML = ricxvib;
     xebi(x_ebi);
   }
@@ -388,8 +392,9 @@ function bonus3(){
     document.getElementById('qulab').innerHTML = ricxvib;
     document.getElementById('ag_titu_p').innerHTML = titu;
     xebi(x_ebi);
+    sadac_ara_sjobs.play();
   }
-  sadac_ara_sjobs.play();
+  
 }
 
 function bonus4(){
@@ -420,8 +425,9 @@ function bonus5(){
     document.getElementById('qulab').innerHTML = ricxvib;
     document.getElementById('ag_ajika_p').innerHTML = ajika;
     xebi(x_ebi);
+    ajika_xma.play();
   }
-  ajika_xma.play();
+  
 }
 
 function bonus6(){
@@ -435,8 +441,9 @@ function bonus6(){
     document.getElementById('qulab').innerHTML = ricxvib;
     document.getElementById('ag_adeqit_p').innerHTML = adeqit;
     xebi(x_ebi);
+    rom_shemisrulda.play();
   }
-  rom_shemisrulda.play();
+  
 }
 
 
